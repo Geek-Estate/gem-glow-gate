@@ -154,7 +154,7 @@ const Index = () => {
         <h2 className="serif-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.15]">Experienced operators.<br />Aligned investors.</h2>
         <div className="divider" />
         <p className="max-w-[60ch] text-foreground/60 mb-14 text-[1.05rem]">
-          The group will remain intentionally small — every partner has built and exited companies in proptech, and brings genuine operational experience to every investment.
+          The group will remain intentionally small — every partner has built, operated, and/or exited companies in proptech, and brings genuine operational experience to every investment.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {PARTNERS.map((partner) => (
