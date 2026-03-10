@@ -83,15 +83,32 @@ const Index = () => {
         <span className="label-text text-foreground tracking-[0.2em]">Ventures</span>
       </nav>
 
-      {/* Hero — anchored bottom-left */}
-      <section className="min-h-screen relative flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12 lg:px-20">
-        <div className="max-w-[420px]">
-          <p className="label-text mb-6">Proptech Operative-Investor Collective</p>
-          <h1 className="serif-light text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] text-foreground">
-            Strategic capital
+      {/* Hero */}
+      <section className="min-h-screen relative flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24">
+        <div className="max-w-4xl">
+          <p className="label-text text-accent mb-8 tracking-[0.2em]">Proptech Operative–Investor Collective</p>
+          <h1 className="serif-light text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[1.05] text-foreground mb-10">
+            Builders
             <br />
-            from builders.
+            Investing in <em className="serif-regular text-accent not-italic" style={{ fontStyle: 'italic' }}>Builders</em>
           </h1>
+          <p className="font-sans text-sm md:text-base leading-relaxed text-muted-foreground max-w-xl mb-12">
+            GEM Ventures is a highly curated angel group built around shared conviction
+            — strategic capital from seasoned proptech operators who bring
+            connections, mentorship, and hard-won insight to every investment.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="brand" size="xl">Apply for Funding</Button>
+            </a>
+            <a href="#learn-more">
+              <Button variant="brand-outline" size="xl">Learn More</Button>
+            </a>
+          </div>
         </div>
       </section>
 
