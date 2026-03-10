@@ -6,6 +6,7 @@ import iconInvest from "@/assets/icon-invest.png";
 import headshotGrierAllen from "@/assets/headshot-grier-allen.png";
 import headshotGregRobertson from "@/assets/headshot-greg-robertson.webp";
 import headshotHeatherHarmon from "@/assets/headshot-heather-harmon.jpeg";
+import headshotRyanCoon from "@/assets/headshot-ryan-coon.jpg";
 import { Button } from "@/components/ui/button";
 
 const APPLY_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform";
