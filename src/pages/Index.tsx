@@ -4,6 +4,7 @@ import gemLogoFull from "@/assets/gem-ventures-logo-full.png";
 import iconHandshake from "@/assets/icon-handshake.png";
 import iconInvest from "@/assets/icon-invest.png";
 import headshotGrierAllen from "@/assets/headshot-grier-allen.png";
+import headshotGregRobertson from "@/assets/headshot-greg-robertson.webp";
 import { Button } from "@/components/ui/button";
 
 const APPLY_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform";
