@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import gemLogo from "@/assets/gem-ventures-logo.png";
+import gemLogoFull from "@/assets/gem-ventures-logo-full.png";
 import gemHorizontal from "@/assets/gem-horizontal-reverse.png";
-import gemIcon from "@/assets/gem-icon.png";
+import iconHandshake from "@/assets/icon-handshake.png";
+import iconInvest from "@/assets/icon-invest.png";
 import { Button } from "@/components/ui/button";
 
 const RefractionText = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
