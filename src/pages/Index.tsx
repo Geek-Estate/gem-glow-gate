@@ -135,7 +135,7 @@ const Index = () => {
         <div className="grid grid-cols-12 w-full gap-4">
           <div className="col-span-12 md:col-start-7 md:col-span-4">
             <RefractionText>
-              <p className="label-text mb-8">Differentiation</p>
+              <img src={iconHandshake} alt="Partnership" className="w-16 h-16 mb-8 opacity-80" />
               <p className="serif-light text-xl md:text-2xl leading-[1.4] text-foreground mb-12">
                 This isn't passive capital. If you want a silent check, we're not for you. We bring connections, mentorship, and hard-won insight to the table.
               </p>
