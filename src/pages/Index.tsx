@@ -21,7 +21,7 @@ const fadeUp = {
 const PARTNERS = [
   { name: "Grier Allen", initials: "GA", role: "Partner", desc: "Chief Strategy Officer at Inside Real Estate; founder of BoomTown (exit to Inside Real Estate).", url: "https://www.linkedin.com/in/grierallen/", photo: headshotGrierAllen },
   { name: "Heather Harmon", initials: "HH", role: "Partner", desc: "Four-time founder and public company executive; co-founder of RedDoor (exit to Opendoor).", url: "https://www.linkedin.com/in/heatheraharmon/" },
-  { name: "Greg Robertson", initials: "GR", role: "Partner", desc: "30-year real estate tech builder and advisor; co-founded Cloud CMA at W+R Studios (exit to Lone Wolf).", url: "https://www.linkedin.com/in/grobertson/" },
+  { name: "Greg Robertson", initials: "GR", role: "Partner", desc: "30-year real estate tech builder and advisor; co-founded Cloud CMA at W+R Studios (exit to Lone Wolf).", url: "https://www.linkedin.com/in/grobertson/", photo: headshotGregRobertson },
   { name: "Ryan Coon", initials: "RC", role: "Partner", desc: "Co-founder and Managing Partner at Green Street Growth; co-founder of Avail (exit to Realtor.com).", url: "https://www.linkedin.com/in/ryancoon/" },
   { name: "Drew Meyers", initials: "DM", role: "Founder & Partner", desc: "Geek Estate founder; co-founder of Horizon; early Zillow team member.", url: "https://www.linkedin.com/in/drewmeyers/" },
 ];
