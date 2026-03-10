@@ -116,7 +116,7 @@ const Index = () => {
       <div className="h-[var(--section-gap)]" />
 
       {/* Thesis */}
-      <section className="px-6 md:px-12 lg:px-20">
+      <section id="learn-more" className="px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-12 w-full gap-4">
           <div className="col-span-12 md:col-start-2 md:col-span-4">
             <RefractionText>
