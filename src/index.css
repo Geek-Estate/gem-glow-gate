@@ -95,7 +95,11 @@
   }
 
   .hover-fade {
-    @apply transition-opacity duration-[400ms] hover:opacity-60;
+    transition: opacity 400ms;
+  }
+
+  .hover-fade:hover {
+    opacity: 0.6;
   }
 
   .text-brand-green {
