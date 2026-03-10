@@ -240,8 +240,9 @@ const Index = () => {
           <div className="col-span-12 flex flex-col md:flex-row md:items-end md:justify-between">
             <div className="flex items-end gap-8">
               <div>
-                <img src={gemLogo} alt="GEM Ventures" className="h-10 mb-4 opacity-80" />
-                <p className="label-text text-muted-foreground">© {new Date().getFullYear()} GEM Ventures</p>
+              <img src={gemHorizontal} alt="GEM" className="h-8 mb-4 opacity-90" />
+              <p className="label-text mb-1">GEM Ventures</p>
+              <p className="label-text text-muted-foreground">© {new Date().getFullYear()}</p>
               </div>
             </div>
             <div className="mt-8 md:mt-0 flex gap-8">
