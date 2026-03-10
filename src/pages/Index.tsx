@@ -3,6 +3,7 @@ import { useRef } from "react";
 import gemLogo from "@/assets/gem-ventures-logo.png";
 import gemHorizontal from "@/assets/gem-horizontal-reverse.png";
 import gemIcon from "@/assets/gem-icon.png";
+import { Button } from "@/components/ui/button";
 
 const RefractionText = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
