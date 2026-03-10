@@ -6,6 +6,7 @@ import iconInvest from "@/assets/icon-invest.png";
 import headshotGrierAllen from "@/assets/headshot-grier-allen.png";
 import headshotGregRobertson from "@/assets/headshot-greg-robertson.webp";
 import headshotHeatherHarmon from "@/assets/headshot-heather-harmon.jpeg";
+import headshotRyanCoon from "@/assets/headshot-ryan-coon.jpg";
 import { Button } from "@/components/ui/button";
 
 const APPLY_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform";
@@ -23,7 +24,7 @@ const PARTNERS = [
   { name: "Grier Allen", initials: "GA", role: "Partner", desc: "Chief Strategy Officer at Inside Real Estate; founder of BoomTown (exit to Inside Real Estate).", url: "https://www.linkedin.com/in/grierallen/", photo: headshotGrierAllen },
   { name: "Heather Harmon", initials: "HH", role: "Partner", desc: "Four-time founder and public company executive; co-founder of RedDoor (exit to Opendoor).", url: "https://www.linkedin.com/in/heatheraharmon/", photo: headshotHeatherHarmon },
   { name: "Greg Robertson", initials: "GR", role: "Partner", desc: "30-year real estate tech builder and advisor; co-founded Cloud CMA at W+R Studios (exit to Lone Wolf).", url: "https://www.linkedin.com/in/grobertson/", photo: headshotGregRobertson },
-  { name: "Ryan Coon", initials: "RC", role: "Partner", desc: "Co-founder and Managing Partner at Green Street Growth; co-founder of Avail (exit to Realtor.com).", url: "https://www.linkedin.com/in/ryancoon/" },
+  { name: "Ryan Coon", initials: "RC", role: "Partner", desc: "Co-founder and Managing Partner at Green Street Growth; co-founder of Avail (exit to Realtor.com).", url: "https://www.linkedin.com/in/ryancoon/", photo: headshotRyanCoon },
   { name: "Drew Meyers", initials: "DM", role: "Founder & Partner", desc: "Geek Estate founder; co-founder of Horizon; early Zillow team member.", url: "https://www.linkedin.com/in/drewmeyers/" },
 ];
 
