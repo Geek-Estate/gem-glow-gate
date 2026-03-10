@@ -13,8 +13,8 @@ export default {
       },
     },
     fontFamily: {
-      serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-      sans: ['Inter', 'system-ui', 'sans-serif'],
+      serif: ['Playfair Display', 'Georgia', 'serif'],
+      sans: ['DM Sans', 'system-ui', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -63,7 +63,10 @@ export default {
         },
         brand: {
           green: "hsl(var(--brand-green))",
-          gray: "hsl(var(--brand-gray))",
+          "green-dark": "hsl(var(--brand-green-dark))",
+          black: "hsl(var(--brand-black))",
+          "off-white": "hsl(var(--brand-off-white))",
+          "mid-gray": "hsl(var(--brand-mid-gray))",
         },
       },
       borderRadius: {
@@ -73,20 +76,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
