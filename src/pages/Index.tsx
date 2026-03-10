@@ -155,9 +155,13 @@ const Index = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {PARTNERS.map((partner) => (
             <div key={partner.name} className="member-card p-8">
-              <div className="w-[50px] h-[50px] bg-accent/10 border-2 border-accent flex items-center justify-center serif-bold text-[1.1rem] text-brand-green-dark mb-4">
-                {partner.initials}
-              </div>
+              {partner.photo ? (
+                <img src={partner.photo} alt={partner.name} className="w-[50px] h-[50px] object-cover border-2 border-accent" />
+              ) : (
+                <div className="w-[50px] h-[50px] bg-accent/10 border-2 border-accent flex items-center justify-center serif-bold text-[1.1rem] text-brand-green-dark">
+                  {partner.initials}
+                </div>
+              )}
               <h3 className="serif-regular text-[1.1rem] text-foreground mb-1">{partner.name}</h3>
               <p className="text-[0.72rem] text-brand-green-dark uppercase tracking-[0.1em] font-medium mb-3">{partner.role}</p>
               <p className="text-[0.87rem] text-foreground/55 leading-relaxed">{partner.desc}</p>
