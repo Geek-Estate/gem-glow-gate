@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import gemLogo from "@/assets/gem-ventures-logo.png";
+import gemLogoFull from "@/assets/gem-ventures-logo-full.png";
 import gemHorizontal from "@/assets/gem-horizontal-reverse.png";
-import gemIcon from "@/assets/gem-icon.png";
+import iconHandshake from "@/assets/icon-handshake.png";
+import iconInvest from "@/assets/icon-invest.png";
 import { Button } from "@/components/ui/button";
 
 const RefractionText = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
@@ -77,10 +78,8 @@ const Index = () => {
   return (
     <div className="bg-background text-foreground min-h-screen">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-20 py-8">
-        <span className="label-text text-foreground tracking-[0.2em]">
-          <img src={gemIcon} alt="GEM" className="h-6 inline-block" />
-        </span>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-20 py-6 bg-background/80 backdrop-blur-sm">
+        <img src={gemLogoFull} alt="GEM Ventures" className="h-8 md:h-10" />
         <span className="label-text text-foreground tracking-[0.2em]">Ventures</span>
       </nav>
 
@@ -136,7 +135,7 @@ const Index = () => {
         <div className="grid grid-cols-12 w-full gap-4">
           <div className="col-span-12 md:col-start-7 md:col-span-4">
             <RefractionText>
-              <p className="label-text mb-8">Differentiation</p>
+              <img src={iconHandshake} alt="Partnership" className="w-16 h-16 mb-8 opacity-80" />
               <p className="serif-light text-xl md:text-2xl leading-[1.4] text-foreground mb-12">
                 This isn't passive capital. If you want a silent check, we're not for you. We bring connections, mentorship, and hard-won insight to the table.
               </p>
@@ -242,6 +241,7 @@ const Index = () => {
         <div className="grid grid-cols-12 w-full gap-4">
           <div className="col-span-12 md:col-start-5 md:col-span-5">
             <RefractionText>
+              <img src={iconInvest} alt="Investment" className="w-20 h-20 mb-8 opacity-80" />
               <p className="serif-light text-2xl md:text-3xl leading-[1.3] text-foreground">
                 At its core, GEM Ventures isn't about money — it's about alignment. Builders helping builders, investing in a community that grows stronger by backing its own.
               </p>
