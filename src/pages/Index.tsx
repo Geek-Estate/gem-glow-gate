@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import gemLogoFull from "@/assets/gem-ventures-logo-full.png";
+import gemLogoReverse from "@/assets/gem-ventures-logo-reverse.png";
 import gemHorizontal from "@/assets/gem-horizontal-reverse.png";
 import iconHandshake from "@/assets/icon-handshake.png";
 import iconInvest from "@/assets/icon-invest.png";
