@@ -77,7 +77,9 @@ const Index = () => {
     <div className="bg-background text-foreground min-h-screen">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-20 py-8">
-        <span className="label-text text-foreground tracking-[0.2em]">GEM</span>
+        <span className="label-text text-foreground tracking-[0.2em]">
+          <img src={gemIcon} alt="GEM" className="h-6 inline-block" />
+        </span>
         <span className="label-text text-foreground tracking-[0.2em]">Ventures</span>
       </nav>
 
