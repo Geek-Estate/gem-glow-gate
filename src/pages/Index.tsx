@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import gemLogo from "@/assets/gem-ventures-logo.png";
+import gemHorizontal from "@/assets/gem-horizontal-reverse.png";
+import gemIcon from "@/assets/gem-icon.png";
 
 const RefractionText = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -75,7 +77,9 @@ const Index = () => {
     <div className="bg-background text-foreground min-h-screen">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-20 py-8">
-        <span className="label-text text-foreground tracking-[0.2em]">GEM</span>
+        <span className="label-text text-foreground tracking-[0.2em]">
+          <img src={gemIcon} alt="GEM" className="h-6 inline-block" />
+        </span>
         <span className="label-text text-foreground tracking-[0.2em]">Ventures</span>
       </nav>
 
@@ -236,8 +240,9 @@ const Index = () => {
           <div className="col-span-12 flex flex-col md:flex-row md:items-end md:justify-between">
             <div className="flex items-end gap-8">
               <div>
-                <img src={gemLogo} alt="GEM Ventures" className="h-10 mb-4 opacity-80" />
-                <p className="label-text text-muted-foreground">© {new Date().getFullYear()} GEM Ventures</p>
+              <img src={gemHorizontal} alt="GEM" className="h-8 mb-4 opacity-90" />
+              <p className="label-text mb-1">GEM Ventures</p>
+              <p className="label-text text-muted-foreground">© {new Date().getFullYear()}</p>
               </div>
             </div>
             <div className="mt-8 md:mt-0 flex gap-8">
