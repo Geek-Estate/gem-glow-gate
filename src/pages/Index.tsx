@@ -1,288 +1,235 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import gemLogoReverse from "@/assets/gem-ventures-logo-reverse.png";
-import gemHorizontal from "@/assets/gem-horizontal-reverse.png";
+import gemLogoFull from "@/assets/gem-ventures-logo-full.png";
 import iconHandshake from "@/assets/icon-handshake.png";
 import iconInvest from "@/assets/icon-invest.png";
 import { Button } from "@/components/ui/button";
 
-const RefractionText = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+const APPLY_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform";
 
-  const blur = useTransform(scrollYProgress, [0.2, 0.45, 0.5, 0.55, 0.8], [0, 0, 1.2, 0, 0]);
-  const x = useTransform(scrollYProgress, [0.2, 0.45, 0.5, 0.55, 0.8], [0, 0, 1, 0, 0]);
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{
-        filter: useTransform(blur, (v) => `blur(${v}px)`),
-        x,
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.8 },
+  }),
 };
 
 const PARTNERS = [
-  {
-    name: "Grier Allen",
-    role: "CSO, Inside Real Estate",
-    note: "Prior BoomTown founder (exit to Inside Real Estate)",
-    url: "https://www.linkedin.com/in/grierallen/",
-  },
-  {
-    name: "Heather Harmon",
-    role: "Four-time founder & public company executive",
-    note: "Prior co-founder of RedDoor (exit to Opendoor)",
-    url: "https://www.linkedin.com/in/heatheraharmon/",
-  },
-  {
-    name: "Greg Robertson",
-    role: "30-year real estate tech builder & advisor",
-    note: "Co-founded Cloud CMA at W+R Studios (exit to Lone Wolf)",
-    url: "https://www.linkedin.com/in/grobertson/",
-  },
-  {
-    name: "Ryan Coon",
-    role: "Co-founder & Managing Partner, Green Street Growth",
-    note: "Prior co-founder of Avail (exit to Realtor.com)",
-    url: "https://www.linkedin.com/in/ryancoon/",
-  },
-  {
-    name: "Drew Meyers",
-    role: "Geek Estate founder",
-    note: "Prior Horizon co-founder; early Zillow team member",
-    url: "https://www.linkedin.com/in/drewmeyers/",
-  },
+  { name: "Grier Allen", initials: "GA", role: "Partner", desc: "Chief Strategy Officer at Inside Real Estate; founder of BoomTown (exit to Inside Real Estate).", url: "https://www.linkedin.com/in/grierallen/" },
+  { name: "Heather Harmon", initials: "HH", role: "Partner", desc: "Four-time founder and public company executive; co-founder of RedDoor (exit to Opendoor).", url: "https://www.linkedin.com/in/heatheraharmon/" },
+  { name: "Greg Robertson", initials: "GR", role: "Partner", desc: "30-year real estate tech builder and advisor; co-founded Cloud CMA at W+R Studios (exit to Lone Wolf).", url: "https://www.linkedin.com/in/grobertson/" },
+  { name: "Ryan Coon", initials: "RC", role: "Partner", desc: "Co-founder and Managing Partner at Green Street Growth; co-founder of Avail (exit to Realtor.com).", url: "https://www.linkedin.com/in/ryancoon/" },
+  { name: "Drew Meyers", initials: "DM", role: "Founder & Partner", desc: "Geek Estate founder; co-founder of Horizon; early Zillow team member.", url: "https://www.linkedin.com/in/drewmeyers/" },
 ];
 
 const FOCUS_AREAS = [
-  { title: "Wealth Management", desc: "Tools accelerating the agent-to-wealth-manager migration" },
-  { title: "Consumer Search", desc: "A search experience for what could be, rather than what is" },
-  { title: "Build More Homes", desc: "Technology innovations accelerating new housing construction" },
-  { title: "Resilient Housing", desc: "Adapting homes to catastrophic weather, improving insurability" },
-  { title: "Innovating Homeownership", desc: "Accessible, affordable options for new demographics" },
-  { title: "Electrifying Mobile Life", desc: "Self-driving meets the open road — limitless possibilities" },
-  { title: "Aerial Economy", desc: "On-the-ground solutions for the coming skyward infrastructure" },
-  { title: "Robotics", desc: "From humanoid home assistants to construction automation" },
+  { icon: "💼", title: "Wealth Management", desc: "Tools facilitating and accelerating the agent-to-wealth-manager migration, reimagining the real estate advisor of the future." },
+  { icon: "🔍", title: "Consumer Search", desc: "A search experience for what could be rather than what is — transforming how people discover and evaluate property." },
+  { icon: "🏗️", title: "Build More Homes", desc: "Technology innovations that accelerate the construction of new housing units in a market with millions of homes in deficit." },
+  { icon: "🛡️", title: "Resilient Housing", desc: "Technologies helping homes adapt to catastrophic weather events, improve insurability, and lower environmental footprints." },
+  { icon: "🏠", title: "Innovating Homeownership", desc: "Creating more accessible and affordable homeownership options to adapt to new demographics and shifting priorities." },
+  { icon: "⚡", title: "Electrifying Mobile Life", desc: "As self-driving becomes reality, the open road offers limitless possibilities for proptech founders to reimagine living on the move." },
+  { icon: "🚁", title: "Aerial Economy", desc: "On-the-ground solutions providing critical technology and infrastructure needed for a smooth transition to busier skies." },
+  { icon: "🤖", title: "Robotics", desc: "From humanoid robots doing home chores to construction and renovation automation — huge opportunities await those with deep expertise." },
 ];
+
+const HOW_STEPS = [
+  { num: "01", title: "Community-Sourced Deal Flow", desc: "Deals originate from the trusted GEM network — a community of thousands of proptech operators, founders, and investors built over nearly a decade." },
+  { num: "02", title: "Collective Due Diligence", desc: "Every deal is vetted as a group. Shared diligence leverages the collective experience of seasoned operators across all aspects of proptech." },
+  { num: "03", title: "Single Cap Table Entry", desc: "We operate as a syndicate — one clean entry on your cap table, starting at $100k. We're comfortable being the first check in or leading a round." },
+  { num: "04", title: "Active Post-Investment Support", desc: "Advisory input, strategic connections, and shared accountability for success. We'll feature portfolio companies regularly in the Geek Estate ecosystem." },
+  { num: "05", title: "Founder-Aligned Governance", desc: "If we take a board seat, we step back by Series A — or whenever it makes sense. Our goal is to support, not control." },
+];
+
+const PILLARS = [
+  { title: "Strategic Capital", desc: "We make early, high-conviction bets — and commit to supporting companies well beyond the initial investment." },
+  { title: "Collective Intelligence", desc: "Deals are sourced and vetted as a group. Shared diligence, diversified perspectives, and experienced operators weighing in on every startup." },
+  { title: "Founder-First Structure", desc: "We're comfortable being the first check in, and open to leading a round. We operate as a syndicate — one clean entry on your cap table." },
+  { title: "Long-Term Partnership", desc: "Advisory input, strategic connections, and shared accountability for success. If we join a board, we step back by Series A — or whenever it makes sense." },
+];
+
+const NavLinks = () => (
+  <ul className="hidden md:flex gap-9 list-none">
+    {["About", "Focus", "Team", "How It Works"].map((label) => (
+      <li key={label}>
+        <a
+          href={`#${label.toLowerCase().replace(/ /g, "")}`}
+          className="text-foreground/55 text-[0.8rem] uppercase tracking-[0.1em] font-normal no-underline hover:text-accent hover:opacity-100 transition-all"
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+);
 
 const Index = () => {
   return (
     <div className="bg-background text-foreground min-h-screen">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-20 py-6 bg-background/80 backdrop-blur-sm">
-        <img src={gemLogoReverse} alt="GEM Ventures" className="h-8 md:h-10" />
-        <span className="label-text text-foreground tracking-[0.2em]">Ventures</span>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5vw] py-4 bg-background/95 backdrop-blur-xl border-b border-border">
+        <a href="#">
+          <img src={gemLogoFull} alt="GEM Ventures" className="h-[30px]" />
+        </a>
+        <NavLinks />
+        <a href={APPLY_URL} target="_blank" rel="noopener noreferrer">
+          <Button variant="brand" size="default" className="px-6 py-2 text-[0.78rem]">Apply Now</Button>
+        </a>
       </nav>
 
       {/* Hero */}
-      <section className="min-h-screen relative flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24">
-        <div className="max-w-4xl">
-          <p className="label-text text-accent mb-8 tracking-[0.2em]">Proptech Operative–Investor Collective</p>
-          <h1 className="serif-light text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[1.05] text-foreground mb-10">
-            Builders
-            <br />
-            Investing in <em className="serif-regular text-accent not-italic" style={{ fontStyle: 'italic' }}>Builders</em>
-          </h1>
-          <p className="font-sans text-sm md:text-base leading-relaxed text-muted-foreground max-w-xl mb-12">
-            GEM Ventures is a highly curated angel group built around shared conviction
-            — strategic capital from seasoned proptech operators who bring
-            connections, mentorship, and hard-won insight to every investment.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="brand" size="xl">Apply for Funding</Button>
-            </a>
-            <a href="#learn-more">
-              <Button variant="brand-outline" size="xl">Learn More</Button>
-            </a>
-          </div>
+      <section className="hero-section min-h-screen flex flex-col justify-center items-start px-[6vw] md:px-[10vw] pt-40 pb-24 relative">
+        <motion.p custom={1} variants={fadeUp} initial="hidden" animate="visible" className="label-text mb-6" style={{ color: 'hsl(var(--brand-green))' }}>
+          Proptech Operative-Investor Collective
+        </motion.p>
+        <motion.h1 custom={2} variants={fadeUp} initial="hidden" animate="visible" className="serif-display text-[clamp(3rem,7vw,7rem)] leading-[1.0] tracking-tight max-w-[14ch] mb-6 text-primary-foreground">
+          Builders<br />Investing in <em className="italic text-accent">Builders</em>
+        </motion.h1>
+        <motion.p custom={3} variants={fadeUp} initial="hidden" animate="visible" className="text-[clamp(1rem,1.4vw,1.15rem)] max-w-[52ch] text-primary-foreground/55 mb-12">
+          GEM Ventures is a highly curated angel group built around shared conviction — strategic capital from seasoned proptech operators who bring connections, mentorship, and hard-won insight to every investment.
+        </motion.p>
+        <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-wrap gap-4">
+          <a href={APPLY_URL} target="_blank" rel="noopener noreferrer">
+            <Button variant="brand" size="xl">Apply for Funding</Button>
+          </a>
+          <a href="#about">
+            <Button variant="brand-outline" size="xl">Learn More</Button>
+          </a>
+        </motion.div>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
+          <div className="scroll-line" />
+          <span className="text-[0.68rem] uppercase tracking-[0.2em] text-primary-foreground">Scroll</span>
         </div>
       </section>
 
-      <div className="h-[var(--section-gap)]" />
-
-      {/* Thesis */}
-      <section id="learn-more" className="px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-12 w-full gap-4">
-          <div className="col-span-12 md:col-start-2 md:col-span-4">
-            <RefractionText>
-              <p className="label-text mb-8">What We Are</p>
-              <p className="serif-light text-2xl md:text-3xl lg:text-4xl leading-[1.3] text-foreground">
-                A highly curated angel group built around shared conviction, not sponsorship. Seasoned proptech operators deploying strategic, collaborative capital.
-              </p>
-            </RefractionText>
+      {/* About */}
+      <section id="about" className="px-[6vw] md:px-[10vw] py-28 border-t-4 border-accent">
+        <p className="label-text mb-4">Who We Are</p>
+        <h2 className="serif-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.15]">Not just another check.</h2>
+        <div className="divider" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="space-y-5 text-foreground/70 text-[1.05rem]">
+            <p>Born from the GEM community — active since 2017 — GEM Ventures is a proptech operative-investor collective. We're not a traditional fund. We're a tightly curated group of operators who have built and scaled companies, and who believe in <strong className="text-foreground font-medium">strong, long-term partnership</strong> over passive capital.</p>
+            <p>If you're a founder who wants a silent check, we're not for you. But if you value collaborative investors who will roll up their sleeves, make connections, and share accountability for your success — that's exactly who we are.</p>
+            <p>GEM remains first and foremost a community. GEM Ventures is one more arrow in the quiver to help founders and members thrive, without changing that foundation.</p>
+            <p><strong className="text-foreground font-medium">Community alignment, not pay-to-pitch.</strong> There are no fees, no priority placement, and no paid exposure. Founders earn access through the same trusted relationships and merit-driven community GEM has always been built on.</p>
           </div>
-        </div>
-      </section>
-
-      <div className="h-[var(--section-gap)]" />
-
-      {/* Differentiation */}
-      <section className="px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-12 w-full gap-4">
-          <div className="col-span-12 md:col-start-7 md:col-span-4">
-            <RefractionText>
-              <img src={iconHandshake} alt="Partnership" className="w-16 h-16 mb-8 opacity-80" />
-              <p className="serif-light text-xl md:text-2xl leading-[1.4] text-foreground mb-12">
-                This isn't passive capital. If you want a silent check, we're not for you. We bring connections, mentorship, and hard-won insight to the table.
-              </p>
-              <div className="border-t border-seam pt-8">
-                <p className="serif-light text-xl md:text-2xl leading-[1.4] text-foreground">
-                  Deals are sourced and vetted as a group. Shared diligence, diversified perspectives, reduced risk.
-                </p>
+          <div className="flex flex-col gap-6">
+            {PILLARS.map((p) => (
+              <div key={p.title} className="pillar">
+                <h4 className="serif-regular text-[1.05rem] text-foreground mb-1">{p.title}</h4>
+                <p className="text-[0.92rem] text-foreground/55">{p.desc}</p>
               </div>
-            </RefractionText>
+            ))}
           </div>
         </div>
       </section>
-
-      <div className="h-[var(--section-gap)]" />
 
       {/* Focus Areas */}
-      <section className="px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-12 w-full gap-4">
-          <div className="col-span-12 md:col-start-2 md:col-span-5">
-            <RefractionText>
-              <p className="label-text mb-8">Investment Focus</p>
-              <p className="serif-light text-xl md:text-2xl leading-[1.4] text-foreground mb-16">
-                Long on real estate and the Built World. Areas where we're seeking bold ideas:
-              </p>
-              <div className="space-y-8">
-                {FOCUS_AREAS.map((area) => (
-                  <div key={area.title} className="border-t border-seam pt-6">
-                    <p className="serif-regular text-lg text-foreground mb-1">{area.title}</p>
-                    <p className="label-text text-muted-foreground leading-relaxed" style={{ textTransform: "none", letterSpacing: "0.02em" }}>
-                      {area.desc}
-                    </p>
-                  </div>
-                ))}
+      <section id="focus" className="px-[6vw] md:px-[10vw] py-28 bg-secondary">
+        <p className="label-text mb-4">Investment Thesis</p>
+        <h2 className="serif-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.15]">We're long on real estate<br />and the Built World.</h2>
+        <div className="divider" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {FOCUS_AREAS.map((area) => (
+            <div key={area.title} className="focus-card p-8">
+              <div className="text-[1.6rem] mb-4">{area.icon}</div>
+              <h3 className="serif-regular text-[1.05rem] text-foreground mb-2">{area.title}</h3>
+              <p className="text-[0.88rem] text-foreground/55 leading-relaxed">{area.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Team */}
+      <section id="team" className="px-[6vw] md:px-[10vw] py-28">
+        <p className="label-text mb-4">Investor Partners</p>
+        <h2 className="serif-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.15]">Experienced operators.<br />Aligned investors.</h2>
+        <div className="divider" />
+        <p className="max-w-[60ch] text-foreground/60 mb-14 text-[1.05rem]">
+          The group will remain intentionally small — every partner has built and exited companies in proptech, and brings genuine operational experience to every investment.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+          {PARTNERS.map((partner) => (
+            <div key={partner.name} className="member-card p-8">
+              <div className="w-[50px] h-[50px] bg-accent/10 border-2 border-accent flex items-center justify-center serif-bold text-[1.1rem] text-brand-green-dark mb-4">
+                {partner.initials}
               </div>
-            </RefractionText>
-          </div>
+              <h3 className="serif-regular text-[1.1rem] text-foreground mb-1">{partner.name}</h3>
+              <p className="text-[0.72rem] text-brand-green-dark uppercase tracking-[0.1em] font-medium mb-3">{partner.role}</p>
+              <p className="text-[0.87rem] text-foreground/55 leading-relaxed">{partner.desc}</p>
+              <a
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 text-[0.73rem] uppercase tracking-[0.1em] font-medium text-accent no-underline border-b border-transparent hover:border-accent transition-colors"
+              >
+                LinkedIn ↗
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
-      <div className="h-[var(--section-gap)]" />
-
-      {/* Structure */}
-      <section className="px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-12 w-full gap-4">
-          <div className="col-span-12 md:col-start-8 md:col-span-3">
-            <RefractionText>
-              <p className="label-text mb-8">Structure</p>
-              <div className="space-y-10">
-                {[
-                  { label: "Stage", value: "Pre-Seed — Seed" },
-                  { label: "Check Size", value: "$100K+" },
-                  { label: "Sectors", value: "Proptech & Built World" },
-                  { label: "Model", value: "Syndicate — one cap table entry" },
-                  { label: "Board", value: "Available through Series A" },
-                ].map((item) => (
-                  <div key={item.label}>
-                    <p className="label-text mb-2">{item.label}</p>
-                    <p className="serif-regular text-lg text-foreground">{item.value}</p>
-                  </div>
-                ))}
+      {/* How It Works */}
+      <section id="howitworks" className="how-section px-[6vw] md:px-[10vw] py-28">
+        <p className="label-text mb-4">Our Approach</p>
+        <h2 className="serif-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.15] text-primary-foreground">How GEM Ventures works.</h2>
+        <div className="divider" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="flex flex-col gap-8">
+            {HOW_STEPS.map((step) => (
+              <div key={step.num} className="flex gap-6 items-start">
+                <span className="how-num">{step.num}</span>
+                <div>
+                  <h4 className="serif-regular text-[1.05rem] text-primary-foreground mb-1">{step.title}</h4>
+                  <p className="text-[0.9rem] text-primary-foreground/45">{step.desc}</p>
+                </div>
               </div>
-            </RefractionText>
+            ))}
+          </div>
+          <div className="bg-accent/[0.07] border border-accent/[0.28] p-12">
+            <p className="label-text mb-4">Initial Goal</p>
+            <h3 className="serif-bold text-[1.55rem] leading-[1.3] text-primary-foreground mb-5">
+              Back a pre-seed or seed stage company with a check of at least $100k in Q1 or Q2.
+            </h3>
+            <p className="text-[0.95rem] text-primary-foreground/55 mb-4">
+              Once we've made one investment, we'll evaluate when and how to make the next. We're building for the long game — not rushing capital deployment.
+            </p>
+            <p className="text-[0.95rem] text-primary-foreground/55 mb-6">
+              Transparency is core to how we operate. When we invest, we'll publish our investment thesis as a GEM Transmission essay and cover the company several times a year on Geek Estate Blog.
+            </p>
+            <a href={APPLY_URL} target="_blank" rel="noopener noreferrer">
+              <Button variant="brand" size="lg">Apply Today</Button>
+            </a>
           </div>
         </div>
       </section>
 
-      <div className="h-[var(--section-gap)]" />
-
-      {/* Partners */}
-      <section className="px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-12 w-full gap-4">
-          <div className="col-span-12 md:col-start-2 md:col-span-4">
-            <RefractionText>
-              <p className="label-text mb-8">Investment Partners</p>
-              <div className="space-y-10">
-                {PARTNERS.map((partner) => (
-                  <a
-                    key={partner.name}
-                    href={partner.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block hover-fade"
-                  >
-                    <p className="serif-regular text-xl text-foreground mb-1">{partner.name}</p>
-                    <p className="label-text text-muted-foreground mb-1" style={{ textTransform: "none", letterSpacing: "0.02em" }}>
-                      {partner.role}
-                    </p>
-                    <p className="label-text text-accent/60" style={{ textTransform: "none", letterSpacing: "0.02em" }}>
-                      {partner.note}
-                    </p>
-                  </a>
-                ))}
-              </div>
-            </RefractionText>
-          </div>
-        </div>
+      {/* Apply CTA */}
+      <section className="apply-section text-center px-[6vw] md:px-[10vw] py-36 relative">
+        <span className="label-text block mb-4" style={{ color: 'rgba(255,255,255,0.65)' }}>Ready to Build Together?</span>
+        <h2 className="serif-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.15] text-accent-foreground max-w-[18ch] mx-auto mb-4">
+          The most strategic early-stage capital in proptech.
+        </h2>
+        <p className="max-w-[50ch] mx-auto text-accent-foreground/80 text-[1.05rem] mb-12">
+          Interested in founder-aligned capital for your housing or construction startup? We'd love to hear from you. The bar is simple: is this the most founder-friendly capital available for the right company?
+        </p>
+        <a href={APPLY_URL} target="_blank" rel="noopener noreferrer">
+          <Button variant="brand-white" size="xl">Apply for Funding →</Button>
+        </a>
       </section>
-
-      <div className="h-[var(--section-gap)]" />
-
-      {/* Ethos */}
-      <section className="px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-12 w-full gap-4">
-          <div className="col-span-12 md:col-start-5 md:col-span-5">
-            <RefractionText>
-              <img src={iconInvest} alt="Investment" className="w-20 h-20 mb-8 opacity-80" />
-              <p className="serif-light text-2xl md:text-3xl leading-[1.3] text-foreground">
-                At its core, GEM Ventures isn't about money — it's about alignment. Builders helping builders, investing in a community that grows stronger by backing its own.
-              </p>
-            </RefractionText>
-          </div>
-        </div>
-      </section>
-
-      <div className="h-[var(--section-gap)]" />
 
       {/* Footer */}
-      <footer className="px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
-        <div className="grid grid-cols-12 w-full gap-4">
-          <div className="col-span-12 flex flex-col md:flex-row md:items-end md:justify-between">
-            <div className="flex items-end gap-8">
-              <div>
-              <img src={gemHorizontal} alt="GEM" className="h-8 mb-4 opacity-90" />
-              <p className="label-text mb-1">GEM Ventures</p>
-              <p className="label-text text-muted-foreground">© {new Date().getFullYear()}</p>
-              </div>
-            </div>
-            <div className="mt-8 md:mt-0 flex gap-8">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="label-text text-accent hover-fade border-b border-accent/30 pb-1"
-              >
-                Apply
-              </a>
-              <a
-                href="https://geekestate.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="label-text text-muted-foreground hover-fade border-b border-muted-foreground/30 pb-1"
-              >
-                Geek Estate
-              </a>
-            </div>
-          </div>
-        </div>
+      <footer className="border-t border-border px-[6vw] md:px-[10vw] py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <img src={gemLogoFull} alt="GEM Ventures" className="h-[22px]" />
+        <p className="text-[0.77rem] text-muted-foreground">
+          A proptech operative-investor collective. Part of the{" "}
+          <a href="https://www.geekestate.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">Geek Estate</a> ecosystem.
+        </p>
+        <p className="text-[0.77rem] text-muted-foreground">© {new Date().getFullYear()} GEM Ventures</p>
       </footer>
     </div>
   );
