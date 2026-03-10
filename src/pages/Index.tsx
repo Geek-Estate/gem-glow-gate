@@ -241,6 +241,7 @@ const Index = () => {
         <div className="grid grid-cols-12 w-full gap-4">
           <div className="col-span-12 md:col-start-5 md:col-span-5">
             <RefractionText>
+              <img src={iconInvest} alt="Investment" className="w-20 h-20 mb-8 opacity-80" />
               <p className="serif-light text-2xl md:text-3xl leading-[1.3] text-foreground">
                 At its core, GEM Ventures isn't about money — it's about alignment. Builders helping builders, investing in a community that grows stronger by backing its own.
               </p>
