@@ -3,6 +3,7 @@ import gemLogoReverse from "@/assets/gem-ventures-logo-reverse.png";
 import gemLogoFull from "@/assets/gem-ventures-logo-full.png";
 import iconHandshake from "@/assets/icon-handshake.png";
 import iconInvest from "@/assets/icon-invest.png";
+import headshotGrierAllen from "@/assets/headshot-grier-allen.png";
 import { Button } from "@/components/ui/button";
 
 const APPLY_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform";
@@ -17,7 +18,7 @@ const fadeUp = {
 };
 
 const PARTNERS = [
-  { name: "Grier Allen", initials: "GA", role: "Partner", desc: "Chief Strategy Officer at Inside Real Estate; founder of BoomTown (exit to Inside Real Estate).", url: "https://www.linkedin.com/in/grierallen/" },
+  { name: "Grier Allen", initials: "GA", role: "Partner", desc: "Chief Strategy Officer at Inside Real Estate; founder of BoomTown (exit to Inside Real Estate).", url: "https://www.linkedin.com/in/grierallen/", photo: headshotGrierAllen },
   { name: "Heather Harmon", initials: "HH", role: "Partner", desc: "Four-time founder and public company executive; co-founder of RedDoor (exit to Opendoor).", url: "https://www.linkedin.com/in/heatheraharmon/" },
   { name: "Greg Robertson", initials: "GR", role: "Partner", desc: "30-year real estate tech builder and advisor; co-founded Cloud CMA at W+R Studios (exit to Lone Wolf).", url: "https://www.linkedin.com/in/grobertson/" },
   { name: "Ryan Coon", initials: "RC", role: "Partner", desc: "Co-founder and Managing Partner at Green Street Growth; co-founder of Avail (exit to Realtor.com).", url: "https://www.linkedin.com/in/ryancoon/" },
@@ -154,9 +155,13 @@ const Index = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {PARTNERS.map((partner) => (
             <div key={partner.name} className="member-card p-8">
-              <div className="w-[50px] h-[50px] bg-accent/10 border-2 border-accent flex items-center justify-center serif-bold text-[1.1rem] text-brand-green-dark mb-4">
-                {partner.initials}
-              </div>
+              {partner.photo ? (
+                <img src={partner.photo} alt={partner.name} className="w-[50px] h-[50px] object-cover border-2 border-accent" />
+              ) : (
+                <div className="w-[50px] h-[50px] bg-accent/10 border-2 border-accent flex items-center justify-center serif-bold text-[1.1rem] text-brand-green-dark">
+                  {partner.initials}
+                </div>
+              )}
               <h3 className="serif-regular text-[1.1rem] text-foreground mb-1">{partner.name}</h3>
               <p className="text-[0.72rem] text-brand-green-dark uppercase tracking-[0.1em] font-medium mb-3">{partner.role}</p>
               <p className="text-[0.87rem] text-foreground/55 leading-relaxed">{partner.desc}</p>
