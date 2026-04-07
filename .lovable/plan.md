@@ -1,35 +1,19 @@
 
 
-## Troubleshooting: White Screen on Published Site
+## Fix: White Screen on gem-ventures.co
 
-### Likely Root Cause
+### Root Cause
+The error `Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "application/octet-stream"` means the production server is serving `/src/main.tsx` as a raw file instead of as JavaScript. This happens because in production, Vite builds and bundles the code — there is no `/src/main.tsx` file. The built assets live in `/dist/assets/` with `.js` extensions.
 
-The published site at `gem-ventures.co` is showing white space. The dev server runs fine locally. Here's my troubleshooting approach:
+The site works on `.lovable.app` because Lovable's hosting handles this correctly. The custom domain setup may have a caching or deployment sync issue.
 
-### Step 1: Check the published URL directly
-Use browser tools to visit the published site (`https://gem-ventures.co` or `https://gem-glow-gate.lovable.app`) and inspect what's actually rendering — blank HTML, a JS error, or a failed asset load.
+### Fix Steps
 
-### Step 2: Check for build errors
-Run `npx vite build` in the sandbox to see if there are any TypeScript or bundling errors that would prevent a successful deploy.
+1. **Re-publish the site** — The most likely fix is simply clicking "Update" in the publish dialog to trigger a fresh deployment. The build succeeds (confirmed earlier), so the built assets should be served correctly with proper MIME types.
 
-### Step 3: Investigate `index.html` issues
-The `index.html` has **two `<title>` tags** and **two `<meta name="description">` tags** — while not a breaking issue, it's messy. More importantly, I need to verify the built output references the correct entry point.
+2. **Add a favicon** — The 404 on `/favicon.ico` is a minor issue. We can either add a basic favicon or add a `<link rel="icon">` tag pointing to an existing asset to suppress the error.
 
-### Step 4: Check the `#root` constraint in `App.css`
-`App.css` sets `#root { max-width: 1280px }` — but this file doesn't appear to be imported anywhere in the current code. If it were somehow loaded, it could constrain layout but shouldn't cause a white screen.
-
-### Step 5: Check for runtime JS errors on the published site
-The console logs show a `forwardRef` warning but nothing fatal in dev. The published build may have different behavior — I'll check the deployed site's console for errors.
-
-### Implementation Plan
-
-1. **Run `vite build`** to surface any compile-time errors
-2. **Browse the published URL** to check for JS errors or failed network requests
-3. **Fix any issues found** — most likely candidates:
-   - A missing dependency or asset in the production build
-   - A build error silently preventing deployment
-   - The CNAME/DNS not properly resolving yet (was just set to `gem-ventures.co`)
-
-### Most Likely Cause
-Since the CNAME was just changed to `gem-ventures.co`, the white screen could simply be **DNS propagation delay** — the domain may not yet be pointing to the correct Lovable hosting. The `.lovable.app` URL should still work. Let me verify both.
+### What to do
+- Click **Publish → Update** to redeploy
+- If the issue persists after redeployment, we'll investigate the custom domain hosting configuration further
 
