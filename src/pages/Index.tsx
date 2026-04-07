@@ -10,7 +10,7 @@ import headshotRyanCoon from "@/assets/headshot-ryan-coon.jpg";
 import headshotDrewMeyers from "@/assets/headshot-drew-meyers.jpg";
 import { Button } from "@/components/ui/button";
 
-const APPLY_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSETGM3bcPOCm4Iyq5YyKEvi1ev2ZFrw2B3pkuhOw8vYBGPQ/viewform";
+const APPLY_URL = "https://airtable.com/appFmnMtGPBs6uvWv/pagh5zOI1I5hzRi5L/form";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
