@@ -112,7 +112,7 @@ const Index = () => {
       {/* About */}
       <section id="about" className="px-[6vw] md:px-[10vw] py-28 border-t-4 border-accent">
         <p className="label-text mb-4">Who We Are</p>
-        <h2 className="serif-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.15]">Not just another check.</h2>
+        <h2 className="serif-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.15]">For founders who expect more<br />from their investors.</h2>
         <div className="divider" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           <div className="space-y-5 text-foreground/70 text-[1.05rem]">
