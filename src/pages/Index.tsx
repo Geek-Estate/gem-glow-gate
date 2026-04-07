@@ -90,7 +90,7 @@ const Index = () => {
           Proptech Operative-Investor Collective
         </motion.p>
         <motion.h1 custom={2} variants={fadeUp} initial="hidden" animate="visible" className="serif-display text-[clamp(3rem,7vw,7rem)] leading-[1.0] tracking-tight max-w-[20ch] mb-6 text-primary-foreground">
-          Proptech Founders<br />Investing in Proptech <em className="italic text-accent">Founders</em>
+          Proptech Founders<br />Backing Proptech <em className="italic text-accent">Founders</em>
         </motion.h1>
         <motion.p custom={3} variants={fadeUp} initial="hidden" animate="visible" className="text-[clamp(1rem,1.4vw,1.15rem)] max-w-[52ch] text-primary-foreground/55 mb-12">
           GEM Ventures is a highly curated angel group built around shared conviction — strategic capital from seasoned proptech operators who bring connections, mentorship, and hard-won insight to every investment.
