@@ -44,7 +44,7 @@ const HOW_STEPS = [
   { num: "01", title: "Relationship-Earned Deal Flow", desc: "Deals originate from the trusted GEM network — a community of hundreds of proptech operators, founders, and investors built over nearly a decade." },
   { num: "02", title: "Collective Due Diligence", desc: "Every deal is vetted as a group. Shared diligence leverages the collective experience of seasoned operators across all aspects of proptech." },
   { num: "03", title: "Single Cap Table Entry", desc: "We operate as a syndicate — one clean entry on your cap table, starting at $100k. We're comfortable being the first check in or leading a round." },
-  { num: "04", title: "Active Post-Investment Support", desc: "Advisory input, strategic connections, and shared accountability for success. We'll feature portfolio companies regularly in the Geek Estate ecosystem." },
+  { num: "04", title: "Active Post-Investment Support", desc: "Advisory input, strategic connections, and shared accountability for success. We'll feature and connect portfolio companies regularly within the Geek Estate ecosystem, and beyond." },
   { num: "05", title: "Founder-Aligned Governance", desc: "If we take a board seat, we step back by Series A — or whenever it makes sense. Our goal is to support, not control." },
 ];
 
