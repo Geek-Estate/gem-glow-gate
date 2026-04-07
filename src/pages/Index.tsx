@@ -220,7 +220,7 @@ const Index = () => {
           The most strategic early-stage capital in proptech.
         </h2>
         <p className="max-w-[50ch] mx-auto text-accent-foreground/80 text-[1.05rem] mb-12">
-          Interested in founder-aligned capital for your housing or construction startup? We'd love to hear from you. The bar is simple: is this the most founder-friendly capital available for the right company?
+          If you're building the future of housing or construction, we'd love to hear from you.
         </p>
         <a href={APPLY_URL} target="_blank" rel="noopener noreferrer">
           <Button variant="brand-white" size="xl">Apply for Funding →</Button>
