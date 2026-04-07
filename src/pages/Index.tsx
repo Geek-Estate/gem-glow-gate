@@ -199,15 +199,12 @@ const Index = () => {
             ))}
           </div>
           <div className="bg-accent/[0.07] border border-accent/[0.28] p-12">
-            <p className="label-text mb-4">Initial Goal</p>
+            <p className="label-text mb-4">Goal</p>
             <h3 className="serif-bold text-[1.55rem] leading-[1.3] text-primary-foreground mb-5">
-              Back a pre-seed or seed stage company with a check of at least $100k in Q1 or Q2.
+              Pre-seed or Seed checks of $100K+
             </h3>
-            <p className="text-[0.95rem] text-primary-foreground/55 mb-4">
-              Once we've made one investment, we'll evaluate when and how to make the next. We're building for the long game — not rushing capital deployment.
-            </p>
             <p className="text-[0.95rem] text-primary-foreground/55 mb-6">
-              Transparency is core to how we operate. When we invest, we'll publish our investment thesis as a GEM Transmission essay and cover the company several times a year on Geek Estate Blog.
+              Transparency is core to how we operate. When we invest, we'll publish our investment thesis as a GEM Transmission essay and cover the company throughout the year on the Geek Estate Blog.
             </p>
             <a href={APPLY_URL} target="_blank" rel="noopener noreferrer">
               <Button variant="brand" size="lg">Apply Today</Button>
