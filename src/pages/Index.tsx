@@ -116,10 +116,9 @@ const Index = () => {
         <div className="divider" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           <div className="space-y-5 text-foreground/70 text-[1.05rem]">
-            <p>Born from the GEM community — active since 2017 — GEM Ventures is a proptech operative-investor collective. We're not a traditional fund. We're a tightly curated group of operators who have built and scaled companies, and who believe in <strong className="text-foreground font-medium">strong, long-term partnership</strong> over passive capital.</p>
-            <p>If you're a founder who wants a silent check, we're not for you. But if you value collaborative investors who will roll up their sleeves, make connections, and share accountability for your success — that's exactly who we are.</p>
-            <p>GEM remains first and foremost a community. GEM Ventures is one more arrow in the quiver to help founders and members thrive, without changing that foundation.</p>
-            <p><strong className="text-foreground font-medium">Community alignment, not pay-to-pitch.</strong> There are no fees, no priority placement, and no paid exposure. Founders earn access through the same trusted relationships and merit-driven community GEM has always been built on.</p>
+            <p>We help founders build and scale companies across the housing and construction ecosystem. Born from the GEM community — active since 2017 — GEM Ventures is a seasoned group of operators who have built, scaled, and exited proptech companies, and who believe in <strong className="text-foreground font-medium">active partnership over passive capital</strong>.</p>
+            <p>This model works best for founders who value collaborative, engaged investors — partners who make connections, share perspective, and stay involved.</p>
+            <p>GEM Ventures builds on nearly a decade of trusted relationships within the GEM community. Access is earned through relationships, not fees.</p>
           </div>
           <div className="flex flex-col gap-6">
             {PILLARS.map((p) => (
